@@ -144,41 +144,64 @@ button:hover{background:#1ebe5d;}
 </div>
 </div>
 
-<div id="floatWA" onclick="goWA()">
+<div id="floatWA">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </div>
 
 <script>
-// WhatsApp
-const WA_POOL=[
-{link:"https://wa.me/8618396503253",event:"WA_1"},
-{link:"https://wa.me/8613062151120",event:"WA_2"},
-{link:"https://wa.me/8615205956592",event:"WA_3"},
-{link:"https://wa.me/8618050517014",event:"WA_4"}];
-function getCookie(name){const m=document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));return m?m[2]:null;}
-function setCookie(name,value){document.cookie=name+"="+value+";path=/;max-age=2592000";}
-let waIndex=getCookie('wa_idx');
-if(waIndex===null){waIndex=Math.floor(Math.random()*WA_POOL.length);setCookie('wa_idx',waIndex);}
-function goWA(){const eventId='evt_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
-fbq('track','Contact',{}, {eventID:eventId});fbq('trackCustom',WA_POOL[waIndex].event,{}, {eventID:eventId});
-setTimeout(()=>{window.location.href=WA_POOL[waIndex].link},350);}
-document.getElementById('waBtn').onclick=goWA;
+// ======================= WhatsApp 固定轮询分配 =======================
+const WA_POOL = [
+    {link:"https://wa.me/8618396503253", event:"WA_1"},
+    {link:"https://wa.me/8613062151120", event:"WA_2"},
+    {link:"https://wa.me/8615205956592", event:"WA_3"},
+    {link:"https://wa.me/8618050517014", event:"WA_4"}
+];
 
-// Blogs
+function getCookie(name){
+    const m=document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));
+    return m?m[2]:null;
+}
+function setCookie(name,value){
+    document.cookie=name+"="+value+";path=/;max-age=2592000";
+}
+
+// 获取客户固定客服索引
+let waIndex = getCookie('wa_idx');
+if(waIndex===null){
+    let lastIndex = parseInt(getCookie('last_assigned_idx')) || -1;
+    waIndex = (lastIndex + 1) % WA_POOL.length;
+    setCookie('wa_idx', waIndex); // 客户固定客服
+    setCookie('last_assigned_idx', waIndex); // 更新轮询进度
+}
+
+// 点击跳转函数
+function goWA(){
+    const wa = WA_POOL[waIndex];
+    const eventId = 'evt_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+    fbq('track','Contact',{}, {eventID:eventId});
+    fbq('trackCustom', wa.event, {}, {eventID:eventId});
+    setTimeout(()=>{window.location.href=wa.link},350);
+}
+
+// 页面按钮 & 浮动按钮绑定
+document.getElementById('waBtn').onclick = goWA;
+document.getElementById('floatWA').onclick = goWA;
+
+// ======================= Blogs =======================
 const blogs=[
 {title:"How To Choose High Quality LV Bags",img:"https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-again--M25877_PM2_Front%20view.jpg",content:"Check stitching, zippers, and leather texture. High quality LV bags always have precise stitching and smooth zipper movement."},
 {title:"Top Trending LV Handbags 2025",img:"https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_M/louis-vuitton--N40604_PM2_Front%20view.jpg",content:"Models with monogram canvas and elegant leather trims are highly popular. Factory suppliers offer better pricing for bulk orders."}
 ];
 const blogContainer=document.getElementById('blogContainer');
 blogs.forEach((b,i)=>{
-const card=document.createElement('div');card.className='blog-left-right';
-const isEven=i%2===0;
-card.innerHTML=`<div class="blog-image" style="order:${isEven?0:1}"><img src="${b.img}"></div>
-<div class="blog-text" style="order:${isEven?1:0}"><h3>${b.title}</h3><p>${b.content}</p><button class="cta-btn" onclick="goWA()">Learn More</button></div>`;
-blogContainer.appendChild(card);
+    const card=document.createElement('div');card.className='blog-left-right';
+    const isEven=i%2===0;
+    card.innerHTML=`<div class="blog-image" style="order:${isEven?0:1}"><img src="${b.img}"></div>
+    <div class="blog-text" style="order:${isEven?1:0}"><h3>${b.title}</h3><p>${b.content}</p><button class="cta-btn" onclick="goWA()">Learn More</button></div>`;
+    blogContainer.appendChild(card);
 });
 
-// Testimonials
+// ======================= Testimonials =======================
 const customerNames = ["Alice","Bob","Charlie","Diana","Ethan","Fiona","George","Hannah","Ivan","Julia","Kevin","Laura"];
 const allTestimonials = [
 "Great quality, fast delivery! Highly recommend.",
@@ -197,10 +220,10 @@ function getRandomName(){return customerNames[Math.floor(Math.random()*customerN
 const track=document.getElementById('testimonialsTrack');
 const testimonials=getRandomTestimonials(3);
 testimonials.forEach(text=>{
-const name=getRandomName();const color1=getRandomColor();const color2=getRandomColor();
-const div=document.createElement('div');div.className='testimonial-card';
-div.innerHTML=`<div class="testimonial-avatar" style="background: linear-gradient(135deg, ${color1}, ${color2})">${name.charAt(0)}</div><p><strong>${name}:</strong> "${text}"</p>`;
-track.appendChild(div);
+    const name=getRandomName();const color1=getRandomColor();const color2=getRandomColor();
+    const div=document.createElement('div');div.className='testimonial-card';
+    div.innerHTML=`<div class="testimonial-avatar" style="background: linear-gradient(135deg, ${color1}, ${color2})">${name.charAt(0)}</div><p><strong>${name}:</strong> "${text}"</p>`;
+    track.appendChild(div);
 });
 
 const cards=track.children;let index=0;
