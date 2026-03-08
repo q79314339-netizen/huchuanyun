@@ -2,212 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxury Landing Page</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Luxury Products</title>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-body {
-  background: #f7f5f2;
-  color: #222;
-  text-align: center;
-  padding: 40px 20px;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f7f5f2;text-align:center;padding:50px 20px}
 
-/* 顶部标题 */
-.hero h1 {
-  font-size: 28px;
-  color: #b89152; /* 金色 */
-  margin-bottom: 10px;
-}
-.hero p {
-  font-size: 15px;
-  color: #555;
-  max-width: 600px;
-  margin: 0 auto 20px;
-  line-height: 1.5;
-}
+h1{font-size:26px;color:#b89152;margin-bottom:10px}
+.subtitle{font-size:15px;color:#444;max-width:620px;margin:0 auto 22px;line-height:1.5}
 
-/* WhatsApp 按钮 */
-.wa-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #25b566;
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 40px;
-}
-.wa-badge {
-  background: #f7e8c8;
-  color: #222;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: bold;
-}
+.wa-box{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:45px}
+.wa-btn{background:#28c76f;color:#fff;border:none;padding:11px 22px;border-radius:8px;font-weight:bold;cursor:pointer}
+.wa-tag{background:#f9e8c8;color:#222;padding:4px 10px;border-radius:12px;font-size:13px;font-weight:bold}
 
-/* 通用区块 */
-.section {
-  margin-bottom: 40px;
-}
-.section h2 {
-  font-size: 20px;
-  color: #b89152;
-  margin-bottom: 20px;
-  text-align: center;
-}
+.section{margin-bottom:45px}
+.section h2{font-size:20px;color:#b89152;margin-bottom:20px}
 
-/* 三列横向滚动 */
-.scroll-row {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 0 10px 20px;
-  scroll-behavior: smooth;
-  justify-content: center;
-}
-.scroll-row::-webkit-scrollbar { height: 6px; }
-.scroll-row::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+.row{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
+.item{width:210px;text-align:center}
+.item img{width:100%;height:170px;object-fit:cover;border-radius:6px;margin-bottom:10px}
+.item .name{font-weight:600;font-size:15px}
 
-.item {
-  min-width: 220px;
-  text-align: center;
-}
-.item img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-.item .label {
-  font-weight: 600;
-  font-size: 15px;
-  color: #222;
-}
+.info-row{display:flex;justify-content:center;gap:80px;margin:20px 0 40px;flex-wrap:wrap}
+.info-col h2{text-align:left;margin-bottom:12px}
+.info-col li{list-style:none;text-align:left;margin-bottom:6px;font-size:15px}
 
-/* 两列信息（Shipping / Payment） */
-.info-wrap {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin: 30px 0;
-  flex-wrap: wrap;
-}
-.info-col h2 {
-  text-align: left;
-  margin-bottom: 12px;
-}
-.info-col li {
-  list-style: none;
-  text-align: left;
-  font-size: 15px;
-  margin-bottom: 6px;
-  color: #333;
-}
+.testi-row{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap}
+.testi{display:flex;align-items:center;gap:10px}
+.avatar{width:40px;height:40px;border-radius:50%;color:#fff;font-weight:bold;display:grid;place-items:center}
+.star{color:#f4c430}
 
-/* 评价横向滚动 */
-.testimonial-item {
-  min-width: 200px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: #fff;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.star { color: #f4c820; }
-
-/* 浮动 WhatsApp */
-.float-wa {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: #25b566;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.float-wa img {
-  width: 26px;
-}
+.float-wa{position:fixed;bottom:22px;right:22px;width:55px;height:55px;background:#28c76f;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.float-wa img{width:28px}
 </style>
 </head>
 
 <body>
-<div class="hero">
-  <h1>Masterfully Crafted Luxury</h1>
-  <p>Explore our finest collection of watches, bags, and shoes. Trusted by clients worldwide. Contact us easily via WhatsApp.</p>
-  <button class="wa-btn" id="waBtn">
-    Contact via WhatsApp
-    <span class="wa-badge" id="waBadge"></span>
-  </button>
+
+<h1>Masterfully Crafted Luxury</h1>
+<p class="subtitle">Explore our finest collection of watches, bags, and shoes. Trusted by clients worldwide. Contact us easily via WhatsApp.</p >
+
+<div class="wa-box">
+  <button class="wa-btn" id="waBtn">Contact via WhatsApp</button>
+  <span class="wa-tag" id="waTag">Alice</span>
 </div>
 
-<!-- Popular Products -->
+<!-- Popular Products 三张并排：手表 / 包包 / 鞋子 -->
 <div class="section">
   <h2>👜 Popular Products</h2>
-  <div class="scroll-row">
+  <div class="row">
     <div class="item">
-      <img src="https://via.placeholder.com/220x180/111/fff" alt="Rolex Watch">
-      <div class="label">Rolex Watch</div>
+      < img src="https://i.imgur.com/yoX0LcD.jpg" alt="Rolex Watch">
+      <div class="name">Rolex Watch</div>
     </div>
     <div class="item">
-      <img src="https://via.placeholder.com/220x180/664c34/fff" alt="LV Bag">
-      <div class="label">LV Bag</div>
+      < img src="https://i.imgur.com/K5bXQHh.jpg" alt="LV Bag">
+      <div class="name">LV Bag</div>
     </div>
     <div class="item">
-      <img src="https://via.placeholder.com/220x180/222/fff" alt="LV Shoes">
-      <div class="label">LV Shoes</div>
+      < img src="https://i.imgur.com/UqzJZJL.jpg" alt="LV Shoes">
+      <div class="name">LV Shoes</div>
     </div>
   </div>
 </div>
 
-<!-- Latest Articles -->
+<!-- Latest Articles 同样三张 -->
 <div class="section">
   <h2>📰 Latest Articles</h2>
-  <div class="scroll-row">
+  <div class="row">
     <div class="item">
-      <img src="https://via.placeholder.com/220x180/222/fff" alt="Rolex Watch">
-      <div class="label">Rolex Watch</div>
+      < img src="https://i.imgur.com/yoX0LcD.jpg" alt="Rolex Watch">
+      <div class="name">Rolex Watch</div>
     </div>
     <div class="item">
-      <img src="https://via.placeholder.com/220x180/664c34/fff" alt="LV Bag">
-      <div class="label">LV Bag</div>
+      < img src="https://i.imgur.com/K5bXQHh.jpg" alt="LV Bag">
+      <div class="name">LV Bag</div>
     </div>
     <div class="item">
-      <img src="https://via.placeholder.com/220x180/222/fff" alt="LV Shoes">
-      <div class="label">LV Shoes</div>
+      < img src="https://i.imgur.com/UqzJZJL.jpg" alt="LV Shoes">
+      <div class="name">LV Shoes</div>
     </div>
   </div>
 </div>
 
-<!-- Shipping & Payment -->
-<div class="info-wrap">
+<div class="info-row">
   <div class="info-col">
     <h2>🚚 Shipping</h2>
     <ul>
@@ -226,46 +104,31 @@ body {
   </div>
 </div>
 
-<!-- Customer Testimonials -->
 <div class="section">
   <h2>⭐ Customer Testimonials</h2>
-  <div class="scroll-row">
-    <div class="testimonial-item">
-      <div class="avatar" style="background:#e65151">C</div>
-      <div>Charlie</div>
-      <div class="star">★★★★★</div>
-    </div>
-    <div class="testimonial-item">
-      <div class="avatar" style="background:#b242ac">F</div>
-      <div>Fiona</div>
-      <div class="star">★★★★☆</div>
-    </div>
-    <div class="testimonial-item">
-      <div class="avatar" style="background:#72c352">K</div>
-      <div>Kevin</div>
-      <div class="star">★★★★☆</div>
-    </div>
+  <div class="testi-row">
+    <div class="testi"><div class="avatar" style="background:#e64c4c">C</div><div>Charlie<br><span class="star">★★★★★</span></div></div>
+    <div class="testi"><div class="avatar" style="background:#c94fc0">F</div><div>Fiona<br><span class="star">★★★★☆</span></div></div>
+    <div class="testi"><div class="avatar" style="background:#77c952">K</div><div>Kevin<br><span class="star">★★★★☆</span></div></div>
   </div>
 </div>
 
 <div class="float-wa" id="floatWA">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+  < img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </div>
 
 <script>
-// WA 客服轮换
-const WA_POOL = [
+const waList = [
   {name:"Alice", link:"https://wa.me/8618396503253"},
   {name:"Bob", link:"https://wa.me/8613062151120"}
 ];
-let idx = 0;
-document.getElementById('waBadge').innerText = WA_POOL[idx].name;
+let i=0;
+document.getElementById('waTag').innerText = waList[i].name;
 
-function goWA() {
-  window.open(WA_POOL[idx].link, '_blank');
-}
-document.getElementById('waBtn').onclick = goWA;
-document.getElementById('floatWA').onclick = goWA;
+function goWA(){ window.open(waList[i].link,'_blank') }
+document.getElementById('waBtn').onclick=goWA;
+document.getElementById('floatWA').onclick=goWA;
 </script>
+
 </body>
 </html>
