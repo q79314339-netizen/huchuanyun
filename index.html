@@ -24,7 +24,6 @@ h1,h2,h3{color:#FFD700;}p{color:#333;line-height:1.6;}
 .product-card:hover{transform:translateY(-5px);}
 .product-card img{width:100%;border-radius:12px;}
 .product-name{margin-top:10px;font-weight:bold;color:#111;}
-.product-price{color:#FFD700;font-weight:bold;}
 
 /* Blog */
 .blog-left-right{display:flex;gap:20px;margin:40px 0;align-items:center;background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);}
@@ -71,21 +70,17 @@ h1,h2,h3{color:#FFD700;}p{color:#333;line-height:1.6;}
   <div class="section-block">
     <h2>👜 Popular Products</h2>
     <div class="product-gallery" id="productGallery">
-      <!-- 每个产品独立卡片 -->
       <div class="product-card">
-        <img src="/mnt/data/a_digital_screenshot_of_a_webpage_showcases_luxury.png" alt="Rolex Watch" onclick="goWA()">
+        <img src="/mnt/data/a_digital_screenshot_of_a_luxury_product_showcase.png" alt="Rolex Watch" onclick="goWA()">
         <div class="product-name">Rolex Watch</div>
-        <div class="product-price">$12,500</div>
       </div>
       <div class="product-card">
-        <img src="/mnt/data/a_digital_screenshot_of_a_webpage_showcases_luxury.png" alt="LV Bag" onclick="goWA()">
+        <img src="/mnt/data/a_digital_screenshot_of_a_luxury_product_showcase.png" alt="LV Bag" onclick="goWA()">
         <div class="product-name">LV Bag</div>
-        <div class="product-price">$3,800</div>
       </div>
       <div class="product-card">
-        <img src="/mnt/data/a_digital_screenshot_of_a_webpage_showcases_luxury.png" alt="LV Shoes" onclick="goWA()">
+        <img src="/mnt/data/a_digital_screenshot_of_a_luxury_product_showcase.png" alt="LV Shoes" onclick="goWA()">
         <div class="product-name">LV Shoes</div>
-        <div class="product-price">$1,200</div>
       </div>
     </div>
   </div>
@@ -120,7 +115,7 @@ h1,h2,h3{color:#FFD700;}p{color:#333;line-height:1.6;}
 </div>
 
 <script>
-// ======================= WhatsApp 轮询客服 + 徽章显示 =======================
+// WhatsApp 轮询客服 + 徽章显示
 const WA_POOL=[
   {name:"Alice",link:"https://wa.me/8618396503253",event:"WA_1"},
   {name:"Bob",link:"https://wa.me/8613062151120",event:"WA_2"},
@@ -147,7 +142,7 @@ function goWA(){
 document.getElementById('waBtn').onclick=goWA;
 document.getElementById('floatWA').onclick=goWA;
 
-// ======================= Blogs =======================
+// Blogs
 const blogs=[
   {title:"Top Luxury Watches of 2025",img:"https://picsum.photos/seed/blogwatch1/500/400",content:"Explore the most exquisite luxury watches with precision engineering and timeless design."},
   {title:"Elegant Designer Bags You Must Have",img:"https://picsum.photos/seed/blogbag1/500/400",content:"Discover the latest designer handbags that combine style and functionality for every occasion."},
@@ -161,7 +156,7 @@ blogs.forEach((b,i)=>{
   blogContainer.appendChild(card);
 });
 
-// ======================= Testimonials =======================
+// Testimonials
 const customerNames=["Alice","Bob","Charlie","Diana","Ethan","Fiona","George","Hannah","Ivan","Julia","Kevin","Laura"];
 const allTestimonials=[
 "Great quality, fast delivery! Highly recommend.",
