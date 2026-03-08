@@ -26,68 +26,87 @@ fbq('track','PageView');
 <style>
 body{
   font-family: 'Arial', sans-serif;
-  background-color:#0d0d0d;
-  color:white;
+  background-color:#ffffff;
+  color:#111111;
   margin:0;padding:0;
 }
-.container{
-  max-width:1000px;margin:0 auto;padding:40px 20px;
+
+/* 区块通用样式 */
+.section-block{
+  background-color:#f5f5f5;
+  padding:40px 20px;
+  margin-bottom:40px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.03);
 }
+
+/* container 内白底卡片 */
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  background-color:#ffffff;
+  border-radius:12px;
+  padding:20px 30px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* 标题与文字 */
 h1,h2,h3{color:#FFD700;}
-p{color:#ccc;line-height:1.6;}
-button{
+p{color:#333;line-height:1.6;}
+
+/* WhatsApp 按钮与徽章 */
+.wa-button-wrap{
+  display:flex;align-items:center;gap:10px;margin-top:10px;
+}
+.wa-button-wrap button{
   background:#25D366;color:white;border:none;padding:12px 25px;
   border-radius:10px;font-weight:bold;cursor:pointer;transition:0.3s;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
-button:hover{background:#1ebe5d;}
+.wa-button-wrap button:hover{background:#1ebe5d;}
+#waBadge{
+  background:#FFD700;color:#111;padding:4px 10px;border-radius:12px;
+  font-size:13px;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
 
-/* Product Gallery */
+/* 产品画廊 */
 .product-gallery{
   display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:30px 0;
+  background-color:#ffffff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 .product-gallery img{
-  width:100%;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.5);
-  cursor:pointer;transition: transform 0.3s, filter 0.3s;
+  width:100%;border-radius:12px;cursor:pointer;transition: transform 0.3s, filter 0.3s;
 }
-.product-gallery img:hover{transform:scale(1.05);filter:brightness(1.1);}
+.product-gallery img:hover{transform:scale(1.05);filter:brightness(1.05);}
 
-/* Blog Section */
+/* 博客区 */
 .blog-left-right{
   display:flex;gap:20px;margin:40px 0;align-items:center;
+  background-color:#ffffff;padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 .blog-left-right img{
-  width:350px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.5);
-  transition: transform 0.5s, filter 0.5s;
+  width:350px;border-radius:12px;transition: transform 0.5s, filter 0.5s;
 }
-.blog-left-right img:hover{transform:scale(1.08) rotate(1deg); filter:brightness(1.1);}
+.blog-left-right img:hover{transform:scale(1.05) rotate(1deg); filter:brightness(1.05);}
 .blog-text{flex:1;text-align:left;}
 .blog-text h3{margin-top:0;color:#FFD700;}
-.blog-text p{color:#ccc;font-size:15px;}
+.blog-text p{color:#333;font-size:15px;}
 .blog-text button.cta-btn{
-  background:#FFD700;color:#0d0d0d;font-weight:bold;
+  background:#FFD700;color:#111;font-weight:bold;
   margin-top:10px;border-radius:8px;padding:10px 18px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 .blog-text button.cta-btn:hover{background:#ffbf00;}
 
-/* Info Section */
-.info-section{margin:40px 0;}
-.info-section h2{margin-bottom:10px;}
-.info-section ul{padding-left:20px;}
-.info-section ul li{margin-bottom:8px;color:#ccc;}
+/* 信息区和评价区 */
+.info-section, .testimonials-container{
+  background-color:#f5f5f5;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.03);
+}
 
-/* Testimonials */
-.testimonials-container{margin-top:20px;overflow:hidden;position:relative;}
-.testimonials-track{display:flex;transition:transform 0.4s ease;}
-.testimonial-card{flex:0 0 80%;margin-right:15px;background:#1a1a1a;border-radius:15px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);padding:15px;text-align:left;display:flex;align-items:center;gap:15px;}
-.testimonial-avatar{width:60px;height:60px;border-radius:50%;color:#fff;
-  font-weight:bold;font-size:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.testimonial-card p{margin:0;font-size:14px;color:#ccc;}
-.testimonials-controls{text-align:center;margin-top:10px;}
-.testimonials-controls button{background:#FFD700;color:#0d0d0d;border:none;padding:5px 12px;margin:0 5px;border-radius:8px;cursor:pointer;}
-.testimonials-controls button:hover{background:#ffbf00;}
-
-/* Floating WhatsApp Button */
+/* 浮动 WhatsApp 按钮 */
 #floatWA{
   position:fixed;bottom:20px;right:20px;width:60px;height:60px;
   background:#25D366;border-radius:50%;display:flex;align-items:center;
@@ -96,6 +115,21 @@ button:hover{background:#1ebe5d;}
 #floatWA img{width:35px;height:35px;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 
+/* 客服显示标签 */
+#assignedWA{margin-top:8px;font-size:14px;color:#555;}
+
+/* 测评滑块 */
+.testimonials-track{display:flex;transition:transform 0.4s ease;}
+.testimonial-card{flex:0 0 80%;margin-right:15px;background:#ffffff;border-radius:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);padding:15px;text-align:left;display:flex;align-items:center;gap:15px;}
+.testimonial-avatar{width:60px;height:60px;border-radius:50%;color:#fff;
+  font-weight:bold;font-size:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.testimonial-card p{margin:0;font-size:14px;color:#333;}
+.testimonials-controls{text-align:center;margin-top:10px;}
+.testimonials-controls button{background:#FFD700;color:#111;border:none;padding:5px 12px;margin:0 5px;border-radius:8px;cursor:pointer;}
+.testimonials-controls button:hover{background:#ffbf00;}
+
+/* 响应式 */
 @media(max-width:768px){
   .blog-left-right{flex-direction:column;}.blog-left-right img{width:100%;}.product-gallery{grid-template-columns:1fr;}
   .testimonial-card{flex:0 0 90%;}
@@ -108,39 +142,51 @@ button:hover{background:#1ebe5d;}
 <h1>Masterfully Crafted Luxury</h1>
 <p>Explore our finest collection of bags, watches, and accessories. Trusted by clients worldwide. Contact us easily via WhatsApp.</p>
 
-<button id="waBtn">Contact via WhatsApp</button>
-
-<h2>👜 Popular Products</h2>
-<div class="product-gallery">
-<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-neverfull-mm--M46975_PM2_Front%20view.jpg" onclick="goWA()">
-<img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-again--M25877_PM2_Front%20view.jpg" onclick="goWA()">
+<!-- WhatsApp 按钮 + 徽章 -->
+<div class="wa-button-wrap">
+  <button id="waBtn">Contact via WhatsApp</button>
+  <span id="waBadge"></span>
 </div>
 
-<h2>📰 Latest Articles</h2>
-<div id="blogContainer"></div>
-
-<div class="info-section">
-<h2>🚚 Shipping</h2>
-<ul>
-<li>Orders processed within 24 hours</li>
-<li>DHL / FedEx / UPS shipping</li>
-<li>Tracking number provided</li>
-</ul>
-
-<h2>💰 Payment</h2>
-<ul>
-<li>PayPal</li>
-<li>Western Union</li>
-<li>Bank Transfer</li>
-</ul>
-
-<h2>🌟 Customer Testimonials</h2>
-<div class="testimonials-container">
-<div class="testimonials-track" id="testimonialsTrack"></div>
-<div class="testimonials-controls">
-<button id="prevBtn">&#8592;</button>
-<button id="nextBtn">&#8594;</button>
+<!-- 产品区 -->
+<div class="section-block">
+  <h2>👜 Popular Products</h2>
+  <div class="product-gallery">
+    <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-neverfull-mm--M46975_PM2_Front%20view.jpg" onclick="goWA()">
+    <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-again--M25877_PM2_Front%20view.jpg" onclick="goWA()">
+  </div>
 </div>
+
+<!-- 博客区 -->
+<div class="section-block">
+  <h2>📰 Latest Articles</h2>
+  <div id="blogContainer"></div>
+</div>
+
+<!-- 信息区 -->
+<div class="section-block info-section">
+  <h2>🚚 Shipping</h2>
+  <ul>
+    <li>Orders processed within 24 hours</li>
+    <li>DHL / FedEx / UPS shipping</li>
+    <li>Tracking number provided</li>
+  </ul>
+  <h2>💰 Payment</h2>
+  <ul>
+    <li>PayPal</li>
+    <li>Western Union</li>
+    <li>Bank Transfer</li>
+  </ul>
+</div>
+
+<!-- 客户评价 -->
+<div class="section-block testimonials-container">
+  <h2>🌟 Customer Testimonials</h2>
+  <div class="testimonials-track" id="testimonialsTrack"></div>
+  <div class="testimonials-controls">
+    <button id="prevBtn">&#8592;</button>
+    <button id="nextBtn">&#8594;</button>
+  </div>
 </div>
 </div>
 
@@ -149,12 +195,12 @@ button:hover{background:#1ebe5d;}
 </div>
 
 <script>
-// ======================= WhatsApp 固定轮询分配 =======================
+// ======================= WhatsApp 固定轮询客服 + 徽章显示 =======================
 const WA_POOL = [
-    {link:"https://wa.me/8618396503253", event:"WA_1"},
-    {link:"https://wa.me/8613062151120", event:"WA_2"},
-    {link:"https://wa.me/8615205956592", event:"WA_3"},
-    {link:"https://wa.me/8618050517014", event:"WA_4"}
+    {name:"Alice", link:"https://wa.me/8618396503253", event:"WA_1"},
+    {name:"Bob", link:"https://wa.me/8613062151120", event:"WA_2"},
+    {name:"Charlie", link:"https://wa.me/8615205956592", event:"WA_3"},
+    {name:"Diana", link:"https://wa.me/8618050517014", event:"WA_4"}
 ];
 
 function getCookie(name){
@@ -165,16 +211,19 @@ function setCookie(name,value){
     document.cookie=name+"="+value+";path=/;max-age=2592000";
 }
 
-// 获取客户固定客服索引
+// 固定轮询客服
 let waIndex = getCookie('wa_idx');
 if(waIndex===null){
     let lastIndex = parseInt(getCookie('last_assigned_idx')) || -1;
     waIndex = (lastIndex + 1) % WA_POOL.length;
-    setCookie('wa_idx', waIndex); // 客户固定客服
-    setCookie('last_assigned_idx', waIndex); // 更新轮询进度
+    setCookie('wa_idx', waIndex);
+    setCookie('last_assigned_idx', waIndex);
 }
 
-// 点击跳转函数
+// 显示客服名字到徽章
+document.getElementById('waBadge').innerText = WA_POOL[waIndex].name;
+
+// 点击跳转
 function goWA(){
     const wa = WA_POOL[waIndex];
     const eventId = 'evt_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
@@ -182,8 +231,6 @@ function goWA(){
     fbq('trackCustom', wa.event, {}, {eventID:eventId});
     setTimeout(()=>{window.location.href=wa.link},350);
 }
-
-// 页面按钮 & 浮动按钮绑定
 document.getElementById('waBtn').onclick = goWA;
 document.getElementById('floatWA').onclick = goWA;
 
