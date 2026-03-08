@@ -26,18 +26,18 @@ fbq('track','PageView');
 <style>
 body{
   font-family: 'Arial', sans-serif;
-  background-color:#ffffff;  /* 全局白底 */
-  color:#111111;             /* 深色文字 */
+  background-color:#ffffff;
+  color:#111111;
   margin:0;padding:0;
 }
 .container{
   max-width:1000px;
   margin:0 auto;
   padding:40px 20px;
-  background-color:#ffffff;  
-  color:#111111;             
-  border-radius:12px;        
-  box-shadow:0 8px 20px rgba(0,0,0,0.05); /* 轻微阴影 */
+  background-color:#ffffff;
+  color:#111111;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
 h1,h2,h3{color:#FFD700;}
 p{color:#333;line-height:1.6;}
@@ -103,6 +103,11 @@ button:hover{background:#1ebe5d;}
 #floatWA img{width:35px;height:35px;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 
+/* 客服显示标签 */
+#assignedWA{
+  margin-top:8px;font-size:14px;color:#555;
+}
+
 /* 响应式 */
 @media(max-width:768px){
   .blog-left-right{flex-direction:column;}.blog-left-right img{width:100%;}.product-gallery{grid-template-columns:1fr;}
@@ -117,6 +122,7 @@ button:hover{background:#1ebe5d;}
 <p>Explore our finest collection of bags, watches, and accessories. Trusted by clients worldwide. Contact us easily via WhatsApp.</p>
 
 <button id="waBtn">Contact via WhatsApp</button>
+<p id="assignedWA">Your assigned customer service: </p>
 
 <h2>👜 Popular Products</h2>
 <div class="product-gallery">
@@ -157,12 +163,12 @@ button:hover{background:#1ebe5d;}
 </div>
 
 <script>
-// ======================= WhatsApp 固定轮询分配 =======================
+// ======================= WhatsApp 固定轮询客服 + 显示客服 =======================
 const WA_POOL = [
-    {link:"https://wa.me/8618396503253", event:"WA_1"},
-    {link:"https://wa.me/8613062151120", event:"WA_2"},
-    {link:"https://wa.me/8615205956592", event:"WA_3"},
-    {link:"https://wa.me/8618050517014", event:"WA_4"}
+    {name:"Alice", link:"https://wa.me/8618396503253", event:"WA_1"},
+    {name:"Bob", link:"https://wa.me/8613062151120", event:"WA_2"},
+    {name:"Charlie", link:"https://wa.me/8615205956592", event:"WA_3"},
+    {name:"Diana", link:"https://wa.me/8618050517014", event:"WA_4"}
 ];
 
 function getCookie(name){
@@ -181,6 +187,9 @@ if(waIndex===null){
     setCookie('wa_idx', waIndex); // 客户固定客服
     setCookie('last_assigned_idx', waIndex); // 更新轮询进度
 }
+
+// 显示客服名字
+document.getElementById('assignedWA').innerText = "Your assigned customer service: " + WA_POOL[waIndex].name;
 
 // 点击跳转函数
 function goWA(){
