@@ -58,13 +58,13 @@ p { color: #333; line-height: 1.6; }
 
 <!-- Facebook Pixel noscript -->
 <noscript>
-  <img height="1" width="1" style="display:none" 
+  < img height="1" width="1" style="display:none" 
        src="https://www.facebook.com/tr?id=853640044397925&ev=PageView&noscript=1"/>
 </noscript>
 
 <div class="container">
     <h1>Masterfully Crafted Luxury</h1>
-    <p>Explore our finest collection of watches, bags, and shoes. Trusted by clients worldwide. Contact us easily via WhatsApp.</p>
+    <p>Explore our finest collection of watches, bags, and shoes. Trusted by clients worldwide. Contact us easily via WhatsApp.</p >
 
     <div class="wa-button-wrap">
         <button id="waBtn">Contact via WhatsApp</button>
@@ -75,8 +75,8 @@ p { color: #333; line-height: 1.6; }
     <div class="section-block">
         <h2>👜 Popular Products</h2>
         <div class="product-gallery">
-            <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-neverfull-mm--M46975_PM2_Front%20view.jpg">
-            <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-again--M25877_PM2_Front%20view.jpg">
+            < img src="https://i.imgur.com/9XJfQ7d.jpg">
+            < img src="https://i.imgur.com/kZ4X7L9.jpg">
         </div>
     </div>
 
@@ -115,7 +115,7 @@ p { color: #333; line-height: 1.6; }
 
 <!-- 浮动 WhatsApp -->
 <div id="floatWA">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    < img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </div>
 
 <script>
@@ -130,7 +130,7 @@ let waIndex = 0;
 document.getElementById('waBadge').innerText = WA_POOL[waIndex].name;
 
 function goWA(){
-    fbq('track', 'Lead'); // WhatsApp 点击
+    fbq('track', 'Lead');
     window.location.href = WA_POOL[waIndex].link; 
 }
 
@@ -139,12 +139,12 @@ document.getElementById('floatWA').onclick = goWA;
 
 // -------------------- 博客区 --------------------
 const blogs = [
-    {title:"How To Choose High Quality LV Bags",
-     img:"https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-again--M25877_PM2_Front%20view.jpg",
-     content:"Check stitching, zippers, and leather texture. High quality LV bags always have precise stitching and smooth zipper movement."},
-    {title:"Top Trending LV Handbags 2025",
-     img:"https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_M/louis-vuitton--N40604_PM2_Front%20view.jpg",
-     content:"Models with monogram canvas and elegant leather trims are highly popular. Factory suppliers offer better pricing for bulk orders."}
+    {title:"How To Choose High Quality Luxury Bags",
+     img:"https://i.imgur.com/3sG9RqH.jpg",
+     content:"Check stitching, zippers, and leather texture. High quality luxury bags always have precise stitching and smooth zipper movement."},
+    {title:"Top Trending Luxury Handbags 2025",
+     img:"https://i.imgur.com/Y7nLbZx.jpg",
+     content:"Models with premium canvas and elegant leather trims are highly popular. Factory suppliers offer better pricing for bulk orders."}
 ];
 const blogContainer = document.getElementById('blogContainer');
 blogs.forEach((b,i)=>{
@@ -153,11 +153,11 @@ blogs.forEach((b,i)=>{
     const isEven = i%2===0;
     card.innerHTML = `
         <div class="blog-image" style="order:${isEven?0:1}">
-            <img src="${b.img}">
+            < img src="${b.img}">
         </div>
         <div class="blog-text" style="order:${isEven?1:0}">
             <h3>${b.title}</h3>
-            <p>${b.content}</p>
+            <p>${b.content}</p >
             <button class="cta-btn">Learn More</button>
         </div>
     `;
@@ -188,7 +188,7 @@ testimonials.forEach(text=>{
     const div = document.createElement('div');
     div.className='testimonial-card';
     div.innerHTML=`<div class="testimonial-avatar" style="background: linear-gradient(135deg, ${color1}, ${color2})">${name.charAt(0)}</div>
-                   <p><strong>${name}:</strong> "${text}"</p>`;
+                   <p><strong>${name}:</strong> "${text}"</p >`;
     track.appendChild(div);
 });
 
@@ -200,11 +200,9 @@ document.getElementById('prevBtn').onclick = ()=>{ index=(index-1+cards.length)%
 document.getElementById('nextBtn').onclick = ()=>{ index=(index+1)%cards.length; showSlide(index); };
 
 // -------------------- Pixel 自定义事件 --------------------
-// 产品图片点击
 document.querySelectorAll('.product-gallery img').forEach(img=>{
     img.addEventListener('click', ()=>{ fbq('track', 'ViewProduct'); goWA(); });
 });
-// 博客 Learn More 点击
 document.querySelectorAll('.blog-text button.cta-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{ fbq('track', 'ViewContent'); goWA(); });
 });
