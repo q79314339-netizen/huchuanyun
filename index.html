@@ -31,7 +31,7 @@ body{
   margin:0;padding:0;
 }
 
-/* 通用区块样式 */
+/* 区块通用样式 */
 .section-block{
   background-color:#f5f5f5;
   padding:40px 20px;
@@ -54,13 +54,20 @@ body{
 h1,h2,h3{color:#FFD700;}
 p{color:#333;line-height:1.6;}
 
-/* 按钮 */
-button{
+/* WhatsApp 按钮与徽章 */
+.wa-button-wrap{
+  display:flex;align-items:center;gap:10px;margin-top:10px;
+}
+.wa-button-wrap button{
   background:#25D366;color:white;border:none;padding:12px 25px;
   border-radius:10px;font-weight:bold;cursor:pointer;transition:0.3s;
   box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
-button:hover{background:#1ebe5d;}
+.wa-button-wrap button:hover{background:#1ebe5d;}
+#waBadge{
+  background:#FFD700;color:#111;padding:4px 10px;border-radius:12px;
+  font-size:13px;font-weight:bold;box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
 
 /* 产品画廊 */
 .product-gallery{
@@ -109,9 +116,7 @@ button:hover{background:#1ebe5d;}
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 
 /* 客服显示标签 */
-#assignedWA{
-  margin-top:8px;font-size:14px;color:#555;
-}
+#assignedWA{margin-top:8px;font-size:14px;color:#555;}
 
 /* 测评滑块 */
 .testimonials-track{display:flex;transition:transform 0.4s ease;}
@@ -137,8 +142,11 @@ button:hover{background:#1ebe5d;}
 <h1>Masterfully Crafted Luxury</h1>
 <p>Explore our finest collection of bags, watches, and accessories. Trusted by clients worldwide. Contact us easily via WhatsApp.</p>
 
-<button id="waBtn">Contact via WhatsApp</button>
-<p id="assignedWA">Your assigned customer service: </p>
+<!-- WhatsApp 按钮 + 徽章 -->
+<div class="wa-button-wrap">
+  <button id="waBtn">Contact via WhatsApp</button>
+  <span id="waBadge"></span>
+</div>
 
 <!-- 产品区 -->
 <div class="section-block">
@@ -187,7 +195,7 @@ button:hover{background:#1ebe5d;}
 </div>
 
 <script>
-// ======================= WhatsApp 固定轮询客服 + 显示客服 =======================
+// ======================= WhatsApp 固定轮询客服 + 徽章显示 =======================
 const WA_POOL = [
     {name:"Alice", link:"https://wa.me/8618396503253", event:"WA_1"},
     {name:"Bob", link:"https://wa.me/8613062151120", event:"WA_2"},
@@ -212,8 +220,8 @@ if(waIndex===null){
     setCookie('last_assigned_idx', waIndex);
 }
 
-// 显示客服名字
-document.getElementById('assignedWA').innerText = "Your assigned customer service: " + WA_POOL[waIndex].name;
+// 显示客服名字到徽章
+document.getElementById('waBadge').innerText = WA_POOL[waIndex].name;
 
 // 点击跳转
 function goWA(){
@@ -223,7 +231,6 @@ function goWA(){
     fbq('trackCustom', wa.event, {}, {eventID:eventId});
     setTimeout(()=>{window.location.href=wa.link},350);
 }
-
 document.getElementById('waBtn').onclick = goWA;
 document.getElementById('floatWA').onclick = goWA;
 
