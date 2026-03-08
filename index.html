@@ -2,133 +2,92 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luxury Products</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#f7f5f2;text-align:center;padding:50px 20px}
+body{background:#f7f7f7}
+.main{max-width:100%;margin:auto;padding:20px}
+h1{text-align:center;font-size:24px;color:#b89152;margin:20px 0}
+.subtitle{text-align:center;color:#555;margin-bottom:20px}
 
-h1{font-size:26px;color:#b89152;margin-bottom:10px}
-.subtitle{font-size:15px;color:#444;max-width:620px;margin:0 auto 22px;line-height:1.5}
+/* 横向滚动轮播（你原来的核心功能） */
+.scroll{display:flex;gap:15px;overflow-x:auto;padding:10px;scroll-snap-type:x mandatory}
+.item{min-width:200px;scroll-snap-align:start;text-align:center}
+.item img{width:100%;height:170px;object-fit:cover;border-radius:8px}
+.name{margin-top:8px;font-weight:bold}
 
-.wa-box{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:45px}
-.wa-btn{background:#28c76f;color:#fff;border:none;padding:11px 22px;border-radius:8px;font-weight:bold;cursor:pointer}
-.wa-tag{background:#f9e8c8;color:#222;padding:4px 10px;border-radius:12px;font-size:13px;font-weight:bold}
+/* 左右箭头 */
+.arrow{display:flex;justify-content:space-between;position:relative;top:-120px}
+.arrow span{background:rgba(0,0,0,0.5);color:white;padding:10px;border-radius:50%;cursor:pointer}
 
-.section{margin-bottom:45px}
-.section h2{font-size:20px;color:#b89152;margin-bottom:20px}
+/* WA按钮 */
+.wa-btn{display:block;width:200px;margin:30px auto;padding:12px;background:#25d366;color:white;text-align:center;border-radius:10px;text-decoration:none;font-weight:bold}
 
-.row{display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
-.item{width:210px;text-align:center}
-.item img{width:100%;height:170px;object-fit:cover;border-radius:6px;margin-bottom:10px}
-.item .name{font-weight:600;font-size:15px}
-
-.info-row{display:flex;justify-content:center;gap:80px;margin:20px 0 40px;flex-wrap:wrap}
-.info-col h2{text-align:left;margin-bottom:12px}
-.info-col li{list-style:none;text-align:left;margin-bottom:6px;font-size:15px}
-
-.testi-row{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap}
-.testi{display:flex;align-items:center;gap:10px}
-.avatar{width:40px;height:40px;border-radius:50%;color:#fff;font-weight:bold;display:grid;place-items:center}
-.star{color:#f4c430}
-
-.float-wa{position:fixed;bottom:22px;right:22px;width:55px;height:55px;background:#28c76f;border-radius:50%;display:grid;place-items:center;cursor:pointer}
-.float-wa img{width:28px}
+/* 底部信息 */
+.info{display:flex;justify-content:center;gap:40px;margin:40px 0;color:#333}
+.col h3{margin-bottom:10px;color:#b89152}
+.col p{line-height:1.6}
 </style>
 </head>
 
 <body>
+<div class="main">
+  <h1>Masterfully Crafted Luxury</h1>
+  <p class="subtitle">Explore our finest collection of watches, bags, and shoes. Trusted by clients worldwide.</p >
 
-<h1>Masterfully Crafted Luxury</h1>
-<p class="subtitle">Explore our finest collection of watches, bags, and shoes. Trusted by clients worldwide. Contact us easily via WhatsApp.</p >
-
-<div class="wa-box">
-  <button class="wa-btn" id="waBtn">Contact via WhatsApp</button>
-  <span class="wa-tag" id="waTag">Alice</span>
-</div>
-
-<!-- Popular Products 三张并排：手表 / 包包 / 鞋子 -->
-<div class="section">
-  <h2>👜 Popular Products</h2>
-  <div class="row">
-    <div class="item">
-      < img src="https://i.imgur.com/yoX0LcD.jpg" alt="Rolex Watch">
+  <!-- 横向轮播（你原来的功能！） -->
+  <div class="scroll" id="scroller">
+    <div class="item" onclick="go()">
+      < img src="https://i.imgur.com/xdYhHlz.jpeg" alt="Rolex">
       <div class="name">Rolex Watch</div>
     </div>
-    <div class="item">
-      < img src="https://i.imgur.com/K5bXQHh.jpg" alt="LV Bag">
+    <div class="item" onclick="go()">
+      < img src="https://i.imgur.com/K5bXQHh.jpeg" alt="LV Bag">
       <div class="name">LV Bag</div>
     </div>
-    <div class="item">
-      < img src="https://i.imgur.com/UqzJZJL.jpg" alt="LV Shoes">
+    <div class="item" onclick="go()">
+      < img src="https://i.imgur.com/UMtG4tt.jpeg" alt="LV Shoes">
       <div class="name">LV Shoes</div>
     </div>
   </div>
-</div>
 
-<!-- Latest Articles 同样三张 -->
-<div class="section">
-  <h2>📰 Latest Articles</h2>
-  <div class="row">
-    <div class="item">
-      < img src="https://i.imgur.com/yoX0LcD.jpg" alt="Rolex Watch">
-      <div class="name">Rolex Watch</div>
+  <!-- 左右箭头 -->
+  <div class="arrow">
+    <span onclick="scrollL()">&#10094;</span>
+    <span onclick="scrollR()">&#10095;</span>
+  </div>
+
+  <a href=" " class="wa-btn">Contact WhatsApp</a >
+
+  <div class="info">
+    <div class="col">
+      <h3>🚚 Shipping</h3>
+      <p>24h Fast Process<br>DHL/FedEx/UPS<br>Tracking Provided</p >
     </div>
-    <div class="item">
-      < img src="https://i.imgur.com/K5bXQHh.jpg" alt="LV Bag">
-      <div class="name">LV Bag</div>
-    </div>
-    <div class="item">
-      < img src="https://i.imgur.com/UqzJZJL.jpg" alt="LV Shoes">
-      <div class="name">LV Shoes</div>
+    <div class="col">
+      <h3>💰 Payment</h3>
+      <p>PayPal<br>Western Union<br>Bank Transfer</p >
     </div>
   </div>
-</div>
-
-<div class="info-row">
-  <div class="info-col">
-    <h2>🚚 Shipping</h2>
-    <ul>
-      <li>Orders processed within 24 hours</li>
-      <li>DHL / FedEx / UPS shipping</li>
-      <li>Tracking number provided</li>
-    </ul>
-  </div>
-  <div class="info-col">
-    <h2>💰 Payment</h2>
-    <ul>
-      <li>PayPal</li>
-      <li>Western Union</li>
-      <li>Bank Transfer</li>
-    </ul>
-  </div>
-</div>
-
-<div class="section">
-  <h2>⭐ Customer Testimonials</h2>
-  <div class="testi-row">
-    <div class="testi"><div class="avatar" style="background:#e64c4c">C</div><div>Charlie<br><span class="star">★★★★★</span></div></div>
-    <div class="testi"><div class="avatar" style="background:#c94fc0">F</div><div>Fiona<br><span class="star">★★★★☆</span></div></div>
-    <div class="testi"><div class="avatar" style="background:#77c952">K</div><div>Kevin<br><span class="star">★★★★☆</span></div></div>
-  </div>
-</div>
-
-<div class="float-wa" id="floatWA">
-  < img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </div>
 
 <script>
-const waList = [
-  {name:"Alice", link:"https://wa.me/8618396503253"},
-  {name:"Bob", link:"https://wa.me/8613062151120"}
-];
-let i=0;
-document.getElementById('waTag').innerText = waList[i].name;
-
-function goWA(){ window.open(waList[i].link,'_blank') }
-document.getElementById('waBtn').onclick=goWA;
-document.getElementById('floatWA').onclick=goWA;
+function go(){window.open("https://wa.me/8618396503253","_blank")}
+let s=document.getElementById("scroller");
+function scrollL(){s.scrollBy({left:-300,behavior:"smooth"})}
+function scrollR(){s.scrollBy({left:300,behavior:"smooth"})}
 </script>
 
+<!-- Facebook Pixel 基础代码（你原来有的） -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '123456789'); // 你可以改成自己的像素ID
+fbq('track', 'PageView');
+</script>
 </body>
 </html>
